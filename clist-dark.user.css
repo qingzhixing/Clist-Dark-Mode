@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           CLIST Dark Mode
 @namespace      local.clist.dark
-@version        1.5.0
+@version        1.6.0
 @description    Dark theme for clist.by (Contests + Problems + Standings + Calendar + Donate)
 @author         qingzhixing
 @homepageURL    https://github.com/qingzhixing/Clist-Dark-Mode
@@ -51,6 +51,7 @@
 		--fc-classic-button-strong: var(--bg-hover);
 		--fc-classic-button-strong-border: #484f58;
 		--fc-classic-button-foreground: var(--text);
+		--fc-classic-button-outline: rgba(88, 166, 255, 0.55);
 		--fc-classic-primary: var(--link);
 		--fc-classic-primary-foreground: #fff;
 		--fc-classic-event-contrast: #fff;
@@ -176,6 +177,78 @@
 	.dropdown-menu>.active>a,
 	.dropdown-menu>.active>a:hover,
 	.dropdown-menu>.active>a:focus {
+		background-color: #1f6feb !important;
+		color: #fff !important;
+	}
+
+	/* ===== 标签页（nav-tabs / nav-pills） ===== */
+	/* 原站激活页签是 Bootstrap 默认 white，这里改成抬升的 surface 色 */
+	.nav>li>a {
+		color: var(--text-muted) !important;
+	}
+
+	.nav>li>a:hover,
+	.nav>li>a:focus {
+		background-color: var(--bg-hover) !important;
+		color: var(--text) !important;
+	}
+
+	.nav>li.disabled>a,
+	.nav>li.disabled>a:hover,
+	.nav>li.disabled>a:focus {
+		color: #484f58 !important;
+		background-color: transparent !important;
+	}
+
+	.nav .open>a,
+	.nav .open>a:hover,
+	.nav .open>a:focus {
+		background-color: var(--bg-hover) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.nav-tabs {
+		border-bottom-color: var(--border) !important;
+	}
+
+	.nav-tabs>li>a {
+		background-color: transparent !important;
+		background-image: none !important;
+		border-color: transparent !important;
+		color: var(--text-muted) !important;
+	}
+
+	.nav-tabs>li>a:hover,
+	.nav-tabs>li>a:focus {
+		background-color: var(--bg-hover) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.nav-tabs>li.active>a,
+	.nav-tabs>li.active>a:hover,
+	.nav-tabs>li.active>a:focus {
+		background-color: var(--bg-surface) !important;
+		border-color: var(--border) !important;
+		border-bottom-color: transparent !important;
+		color: #fff !important;
+	}
+
+	.nav-pills>li>a {
+		background-color: transparent !important;
+		color: var(--text-muted) !important;
+	}
+
+	.nav-pills>li>a:hover,
+	.nav-pills>li>a:focus {
+		background-color: var(--bg-hover) !important;
+		color: var(--text) !important;
+	}
+
+	.nav-pills>li.active>a,
+	.nav-pills>li.active>a:hover,
+	.nav-pills>li.active>a:focus {
 		background-color: #1f6feb !important;
 		color: #fff !important;
 	}
@@ -372,6 +445,78 @@
 	/* 日历滚动容器 */
 	#calendar [style*="overflow"] {
 		background-color: var(--bg-alt) !important;
+	}
+
+	/* ===== 日历工具栏 / 视图切换按钮 =====
+	 * FullCalendar v7 的类名是哈希的（fc-classic-xxxx），且原站按钮是白底渐变，
+	 * 只改 background-color 会被渐变盖住，所以同时清掉 background-image。
+	 */
+	#calendar {
+		/* 局部再声明一次，防止原站在 #calendar 上覆盖调色板变量 */
+		--fc-classic-button: var(--bg-surface);
+		--fc-classic-button-border: var(--border);
+		--fc-classic-button-strong: var(--bg-hover);
+		--fc-classic-button-strong-border: #484f58;
+		--fc-classic-button-foreground: var(--text);
+	}
+
+	#calendar [role="toolbar"],
+	#calendar .fc-toolbar,
+	#calendar .fc-toolbar-chunk,
+	#calendar .fc-button-group,
+	#calendar [role="tablist"] {
+		background-color: transparent !important;
+	}
+
+	#calendar button,
+	#calendar [role="tab"],
+	#calendar .fc-button,
+	.clist-calendar-button {
+		background-color: var(--bg-surface) !important;
+		background-image: none !important;
+		border: 1px solid var(--border) !important;
+		color: var(--text) !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+
+	#calendar button:hover,
+	#calendar [role="tab"]:hover,
+	#calendar .fc-button:hover,
+	.clist-calendar-button:hover {
+		background-color: var(--bg-hover) !important;
+		background-image: none !important;
+		border-color: #484f58 !important;
+		color: #fff !important;
+	}
+
+	/* 当前视图 / 按下态：主色蓝，和站内其他激活态一致 */
+	#calendar button[aria-selected="true"],
+	#calendar [role="tab"][aria-selected="true"],
+	#calendar button[aria-pressed="true"],
+	#calendar .clist-calendar-button.active,
+	#calendar .fc-button-active,
+	.clist-calendar-button.active {
+		background-color: #1f6feb !important;
+		background-image: none !important;
+		border-color: #1f6feb !important;
+		color: #fff !important;
+	}
+
+	#calendar button:focus-visible,
+	#calendar .fc-button:focus-visible,
+	.clist-calendar-button:focus-visible {
+		outline: 2px solid var(--link) !important;
+		outline-offset: 1px !important;
+	}
+
+	/* 事件卡片内的按钮保持透明，避免误伤 */
+	#calendar .clist-calendar-event button,
+	#calendar .clist-calendar-event .btn {
+		background-color: transparent !important;
+		background-image: none !important;
+		border-color: transparent !important;
+		color: inherit !important;
 	}
 
 	/* ===== 日历 Popover（“+N more”展开日期详情） =====
@@ -789,6 +934,99 @@
 		border-color: #388bfd !important;
 	}
 
+	/* Bootstrap 3 的按钮带白色纵向渐变，只改 background-color 仍会发亮 */
+	.btn,
+	.btn-default,
+	.btn-primary,
+	.btn-success,
+	.btn-info,
+	.btn-warning,
+	.btn-danger,
+	.close,
+	.progress-bar {
+		background-image: none !important;
+		text-shadow: none !important;
+	}
+
+	/* 语义按钮改用 GitHub 暗色板，避免 #5cb85c / #f0ad4e 这类过饱和亮色 */
+	.btn-success {
+		background-color: #238636 !important;
+		border-color: #2ea043 !important;
+		color: #fff !important;
+	}
+
+	.btn-success:hover,
+	.btn-success:focus,
+	.btn-success:active,
+	.btn-success.active {
+		background-color: #2ea043 !important;
+		border-color: #3fb950 !important;
+		color: #fff !important;
+	}
+
+	.btn-info {
+		background-color: #1f6feb !important;
+		border-color: #388bfd !important;
+		color: #fff !important;
+	}
+
+	.btn-info:hover,
+	.btn-info:focus,
+	.btn-info:active,
+	.btn-info.active {
+		background-color: #388bfd !important;
+		border-color: #58a6ff !important;
+		color: #fff !important;
+	}
+
+	.btn-warning {
+		background-color: #9e6a03 !important;
+		border-color: #bb8009 !important;
+		color: #fff !important;
+	}
+
+	.btn-warning:hover,
+	.btn-warning:focus,
+	.btn-warning:active,
+	.btn-warning.active {
+		background-color: #bb8009 !important;
+		border-color: #d29922 !important;
+		color: #fff !important;
+	}
+
+	.btn-danger {
+		background-color: #da3633 !important;
+		border-color: #f85149 !important;
+		color: #fff !important;
+	}
+
+	.btn-danger:hover,
+	.btn-danger:focus,
+	.btn-danger:active,
+	.btn-danger.active {
+		background-color: #f85149 !important;
+		border-color: #ff7b72 !important;
+		color: #fff !important;
+	}
+
+	.btn-link {
+		background-color: transparent !important;
+		color: var(--link) !important;
+	}
+
+	.btn-link:hover,
+	.btn-link:focus {
+		color: var(--link-hover) !important;
+		text-decoration: underline !important;
+	}
+
+	.btn:focus,
+	.btn:active:focus,
+	.btn.active:focus {
+		outline: 2px solid rgba(88, 166, 255, 0.6) !important;
+		outline-offset: 1px !important;
+	}
+
 	/* ===== Select2 ===== */
 	.select2-container--bootstrap .select2-selection {
 		background-color: var(--bg) !important;
@@ -979,6 +1217,384 @@
 	.list-group-item .service-icon-btn {
 		background-color: transparent !important;
 		border-color: transparent !important;
+	}
+
+	/* ===== Bootstrap 组件兜底（原站亮色控件） ===== */
+
+	/* 关闭按钮 ×（原站是 3px 黑色，暗色下几乎不可见） */
+	.close {
+		color: var(--text-muted) !important;
+		opacity: 1 !important;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: #fff !important;
+		opacity: 1 !important;
+	}
+
+	/* 语义标签 */
+	.label-default {
+		background-color: var(--bg-hover) !important;
+		color: var(--text) !important;
+	}
+
+	.label-success {
+		background-color: #238636 !important;
+		color: #fff !important;
+	}
+
+	.label-info {
+		background-color: #1f6feb !important;
+		color: #fff !important;
+	}
+
+	.label-warning {
+		background-color: #9e6a03 !important;
+		color: #fff !important;
+	}
+
+	.label-danger {
+		background-color: #da3633 !important;
+		color: #fff !important;
+	}
+
+	/* 提示条 */
+	.alert {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+		text-shadow: none !important;
+	}
+
+	.alert-success {
+		background-color: var(--success-bg) !important;
+		border-color: rgba(63, 185, 80, 0.4) !important;
+		color: #7ee787 !important;
+	}
+
+	.alert-info {
+		background-color: var(--info-bg) !important;
+		border-color: rgba(56, 139, 253, 0.4) !important;
+		color: #79c0ff !important;
+	}
+
+	.alert-warning {
+		background-color: var(--warning-bg) !important;
+		border-color: rgba(210, 153, 34, 0.4) !important;
+		color: #e3b341 !important;
+	}
+
+	.alert-danger {
+		background-color: var(--danger-bg) !important;
+		border-color: rgba(248, 81, 73, 0.4) !important;
+		color: #ff7b72 !important;
+	}
+
+	.alert-link {
+		color: inherit !important;
+		font-weight: 600 !important;
+		text-decoration: underline !important;
+	}
+
+	/* 分页 / 翻页 */
+	.pagination>li>a,
+	.pagination>li>span,
+	.pager>li>a {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.pagination>li>a:hover,
+	.pagination>li>a:focus,
+	.pagination>li>span:hover,
+	.pagination>li>span:focus,
+	.pager>li>a:hover,
+	.pager>li>a:focus {
+		background-color: var(--bg-hover) !important;
+		border-color: var(--border) !important;
+		color: #fff !important;
+	}
+
+	.pagination>.active>a,
+	.pagination>.active>a:hover,
+	.pagination>.active>a:focus,
+	.pagination>.active>span,
+	.pagination>.active>span:hover,
+	.pagination>.active>span:focus {
+		background-color: #1f6feb !important;
+		border-color: #1f6feb !important;
+		color: #fff !important;
+	}
+
+	.pagination>.disabled>a,
+	.pagination>.disabled>a:hover,
+	.pagination>.disabled>a:focus,
+	.pagination>.disabled>span,
+	.pagination>.disabled>span:hover,
+	.pagination>.disabled>span:focus {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+		color: var(--text-muted) !important;
+	}
+
+	/* 模态框 */
+	.modal-content {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7) !important;
+	}
+
+	.modal-header,
+	.modal-footer {
+		border-color: var(--border) !important;
+	}
+
+	.modal-title,
+	.modal-body {
+		color: var(--text) !important;
+	}
+
+	/* 气泡卡片 */
+	.popover {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6) !important;
+	}
+
+	.popover-title {
+		background-color: var(--bg-surface) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.popover-content {
+		color: var(--text) !important;
+	}
+
+	.popover>.arrow,
+	.popover>.arrow:after {
+		border-color: transparent;
+	}
+
+	.popover.top>.arrow {
+		border-top-color: var(--border) !important;
+	}
+
+	.popover.top>.arrow:after {
+		border-top-color: var(--bg-alt) !important;
+	}
+
+	.popover.right>.arrow {
+		border-right-color: var(--border) !important;
+	}
+
+	.popover.right>.arrow:after {
+		border-right-color: var(--bg-alt) !important;
+	}
+
+	.popover.bottom>.arrow {
+		border-bottom-color: var(--border) !important;
+	}
+
+	.popover.bottom>.arrow:after {
+		border-bottom-color: var(--bg-alt) !important;
+	}
+
+	.popover.left>.arrow {
+		border-left-color: var(--border) !important;
+	}
+
+	.popover.left>.arrow:after {
+		border-left-color: var(--bg-alt) !important;
+	}
+
+	/* 面包屑 */
+	.breadcrumb {
+		background-color: var(--bg-alt) !important;
+		color: var(--text-muted) !important;
+	}
+
+	.breadcrumb>li+li:before,
+	.breadcrumb>.active {
+		color: var(--text-muted) !important;
+	}
+
+	/* 面板脚注 / well / 缩略图 / 巨幕 */
+	.panel-footer {
+		background-color: var(--bg-surface) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.well {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+		box-shadow: none !important;
+	}
+
+	.thumbnail,
+	.img-thumbnail {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+	}
+
+	.jumbotron {
+		background-color: var(--bg-alt) !important;
+		color: var(--text) !important;
+	}
+
+	/* 代码块 */
+	pre {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	code {
+		background-color: rgba(110, 118, 129, 0.4) !important;
+		color: #e6edf3 !important;
+	}
+
+	pre code {
+		background-color: transparent !important;
+		color: inherit !important;
+	}
+
+	kbd {
+		background-color: var(--bg-hover) !important;
+		color: var(--text) !important;
+		box-shadow: none !important;
+	}
+
+	/* 分隔线 / 标题 / 引用 / 高亮 */
+	hr {
+		border-top-color: var(--border) !important;
+	}
+
+	legend {
+		border-bottom-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.page-header {
+		border-bottom-color: var(--border) !important;
+	}
+
+	blockquote {
+		border-left-color: var(--border) !important;
+		color: var(--text-muted) !important;
+	}
+
+	blockquote footer,
+	blockquote small,
+	blockquote .small {
+		color: var(--text-muted) !important;
+	}
+
+	mark,
+	.mark {
+		background-color: rgba(210, 153, 34, 0.35) !important;
+		color: #fff !important;
+	}
+
+	.help-block {
+		color: var(--text-muted) !important;
+	}
+
+	/* 语义文字色（原站的 text-* 是给白底设计的深色，暗色下对比度不足） */
+	.text-primary {
+		color: var(--link) !important;
+	}
+
+	.text-info {
+		color: var(--info) !important;
+	}
+
+	.text-success {
+		color: var(--success) !important;
+	}
+
+	.text-warning {
+		color: var(--warning) !important;
+	}
+
+	.text-danger {
+		color: var(--danger) !important;
+	}
+
+	/* 表单禁用态 / 原生下拉项 */
+	.form-control[disabled],
+	.form-control[readonly],
+	fieldset[disabled] .form-control {
+		background-color: var(--bg-alt) !important;
+		color: var(--text-muted) !important;
+	}
+
+	select option,
+	select optgroup {
+		background-color: var(--bg-alt) !important;
+		color: var(--text) !important;
+	}
+
+	::placeholder {
+		color: var(--text-muted) !important;
+		opacity: 1 !important;
+	}
+
+	/* 下拉菜单禁用项 */
+	.dropdown-menu>.disabled>a,
+	.dropdown-menu>.disabled>a:hover,
+	.dropdown-menu>.disabled>a:focus {
+		background-color: transparent !important;
+		color: var(--text-muted) !important;
+	}
+
+	/* list-group 语义项 */
+	.list-group-item.disabled,
+	.list-group-item.disabled:hover,
+	.list-group-item.disabled:focus {
+		background-color: var(--bg-alt) !important;
+		color: var(--text-muted) !important;
+	}
+
+	.list-group-item-success {
+		background-color: var(--success-bg) !important;
+		border-color: rgba(63, 185, 80, 0.35) !important;
+		color: #7ee787 !important;
+	}
+
+	.list-group-item-info {
+		background-color: var(--info-bg) !important;
+		border-color: rgba(56, 139, 253, 0.35) !important;
+		color: #79c0ff !important;
+	}
+
+	.list-group-item-warning {
+		background-color: var(--warning-bg) !important;
+		border-color: rgba(210, 153, 34, 0.35) !important;
+		color: #e3b341 !important;
+	}
+
+	.list-group-item-danger {
+		background-color: var(--danger-bg) !important;
+		border-color: rgba(248, 81, 73, 0.35) !important;
+		color: #ff7b72 !important;
+	}
+
+	/* 带边框表格的边框色 */
+	.table-bordered,
+	.table-bordered>thead>tr>th,
+	.table-bordered>tbody>tr>th,
+	.table-bordered>tfoot>tr>th,
+	.table-bordered>thead>tr>td,
+	.table-bordered>tbody>tr>td,
+	.table-bordered>tfoot>tr>td,
+	.table>tbody>tr>th {
+		border-color: var(--border) !important;
 	}
 
 	/* ===== 其他 ===== */

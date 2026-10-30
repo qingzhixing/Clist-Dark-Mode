@@ -5,11 +5,13 @@
 ## ✨ 特性
 
 - **竞赛列表**（Contests）：暗色表格、交替行色、hover 高亮
-- **日历视图**（Calendar）：完整暗色支持，包括「+N more」弹窗内容
+- **日历视图**（Calendar）：完整暗色支持，包括「+N more」弹窗内容与工具栏（Month / Week / List / Year / Days、Today、前后翻页）
 - **Problems 页面**：结果状态列用暗色语义背景（AC / WA / 未尝试）
 - **Standings 页面**：排名行状态色（success / danger / info / warning）暗色适配
 - **Donate 页面**：list-group 暗色化
 - **Badge 语义色**：勾 / 叉 / 问号 / 减号用深色实底背景 + 亮灰图标，不再刺眼
+- **标签页**：`nav-tabs` / `nav-pills` 暗色化，激活页签不再是白底
+- **Bootstrap 组件**：按钮（含白色渐变）、提示条、分页、模态框、气泡卡片、面包屑、代码块等统一暗色
 
 ## 📦 安装
 
