@@ -1,0 +1,1184 @@
+/* ==UserStyle==
+@name           CLIST Dark Mode
+@namespace      local.clist.dark
+@version        1.5.0
+@description    Dark theme for clist.by (Contests + Problems + Standings + Calendar + Donate)
+@author         qingzhixing
+@homepageURL    https://github.com/qingzhixing/Clist-Dark-Mode
+@supportURL     https://github.com/qingzhixing/Clist-Dark-Mode/issues
+@license        AGPL-3.0-or-later
+@preprocessor   default
+@match          *://clist.by/*
+@match          *://*.clist.by/*
+==/UserStyle== */
+
+@-moz-document domain("clist.by") {
+
+	:root {
+		--bg: #0d1117;
+		--bg-alt: #161b22;
+		--bg-surface: #21262d;
+		--bg-hover: #30363d;
+		--border: #30363d;
+		--text: #c9d1d9;
+		--text-muted: #8b949e;
+		--link: #58a6ff;
+		--link-hover: #79c0ff;
+		--success: #3fb950;
+		--danger: #f85149;
+		--warning: #d29922;
+		--info: #58a6ff;
+		--success-bg: rgba(46, 160, 67, 0.15);
+		--danger-bg: rgba(248, 81, 73, 0.15);
+		--info-bg: rgba(56, 139, 253, 0.15);
+		--warning-bg: rgba(210, 153, 34, 0.15);
+
+		/* FullCalendar v7 classic 暗色变量（全局，供 body 下的 popover 继承） */
+		--fc-classic-background: var(--bg-alt);
+		--fc-classic-faint: rgba(255, 255, 255, 0.04);
+		--fc-classic-muted: rgba(255, 255, 255, 0.08);
+		--fc-classic-strong: rgba(255, 255, 255, 0.14);
+		--fc-classic-foreground: var(--text);
+		--fc-classic-faint-foreground: var(--text-muted);
+		--fc-classic-muted-foreground: var(--text-muted);
+		--fc-classic-border: var(--border);
+		--fc-classic-strong-border: #484f58;
+		--fc-classic-highlight: rgba(88, 166, 255, 0.18);
+		--fc-classic-today: rgba(88, 166, 255, 0.12);
+		--fc-classic-now: var(--danger);
+		--fc-classic-button: var(--bg-surface);
+		--fc-classic-button-border: var(--border);
+		--fc-classic-button-strong: var(--bg-hover);
+		--fc-classic-button-strong-border: #484f58;
+		--fc-classic-button-foreground: var(--text);
+		--fc-classic-primary: var(--link);
+		--fc-classic-primary-foreground: #fff;
+		--fc-classic-event-contrast: #fff;
+		--fc-classic-background-event: var(--success);
+		--fc-classic-background-event-opacity: 15%;
+		--fc-classic-background-event-foreground-opacity: 50%;
+	}
+
+	/* ===== 全局 ===== */
+	html,
+	body {
+		background-color: var(--bg) !important;
+		color: var(--text) !important;
+		color-scheme: dark;
+	}
+
+	a {
+		color: var(--link) !important;
+	}
+
+	a:hover,
+	a:focus {
+		color: var(--link-hover) !important;
+	}
+
+	::selection {
+		background-color: #264f78 !important;
+		color: #fff !important;
+	}
+
+	::-webkit-scrollbar {
+		background-color: var(--bg) !important;
+		width: 10px;
+		height: 10px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: var(--bg-hover) !important;
+		border-radius: 6px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background-color: #484f58 !important;
+	}
+
+	.text-muted {
+		color: var(--text-muted) !important;
+	}
+
+	/* ===== 导航栏 ===== */
+	.navbar-default {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+	}
+
+	.navbar-default .navbar-brand,
+	.navbar-default .navbar-nav>li>a {
+		color: var(--text) !important;
+	}
+
+	.navbar-default .navbar-nav>li>a:hover,
+	.navbar-default .navbar-nav>li>a:focus {
+		color: #fff !important;
+		background-color: var(--bg-hover) !important;
+	}
+
+	.navbar-default .navbar-nav>.active>a,
+	.navbar-default .navbar-nav>.active>a:hover,
+	.navbar-default .navbar-nav>.active>a:focus {
+		background-color: var(--bg-surface) !important;
+		color: #fff !important;
+	}
+
+	.navbar-default .navbar-nav>.open>a,
+	.navbar-default .navbar-nav>.open>a:hover,
+	.navbar-default .navbar-nav>.open>a:focus {
+		background-color: var(--bg-surface) !important;
+		color: #fff !important;
+	}
+
+	.navbar-default .navbar-toggle {
+		border-color: var(--border) !important;
+	}
+
+	.navbar-default .navbar-toggle .icon-bar {
+		background-color: var(--text) !important;
+	}
+
+	.navbar-default .navbar-toggle:hover,
+	.navbar-default .navbar-toggle:focus {
+		background-color: var(--bg-hover) !important;
+	}
+
+	.navbar-default .navbar-collapse {
+		border-color: var(--border) !important;
+	}
+
+	/* 下拉菜单 */
+	.dropdown-menu {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6) !important;
+	}
+
+	.dropdown-menu>li>a {
+		color: var(--text) !important;
+	}
+
+	.dropdown-menu>li>a:hover,
+	.dropdown-menu>li>a:focus {
+		background-color: var(--bg-hover) !important;
+		color: #fff !important;
+	}
+
+	.dropdown-menu .divider {
+		background-color: var(--border) !important;
+	}
+
+	.dropdown-header {
+		color: var(--text-muted) !important;
+	}
+
+	.dropdown-menu>.active>a,
+	.dropdown-menu>.active>a:hover,
+	.dropdown-menu>.active>a:focus {
+		background-color: #1f6feb !important;
+		color: #fff !important;
+	}
+
+	/* ===== 面板 / 容器 ===== */
+	.panel {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+	}
+
+	.panel-default {
+		border-color: var(--border) !important;
+	}
+
+	.panel-default>.panel-heading {
+		background-color: var(--bg-surface) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.table-responsive {
+		border-color: var(--border) !important;
+	}
+
+	/* ===== 表格通用 ===== */
+	.table {
+		background-color: transparent !important;
+		color: var(--text) !important;
+	}
+
+	.table>thead>tr>th {
+		border-bottom-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.table>tbody>tr>td {
+		border-top-color: var(--border) !important;
+	}
+
+	.floatThead-container {
+		background-color: var(--bg-surface) !important;
+	}
+
+	.floatThead-table {
+		background-color: var(--bg-surface) !important;
+	}
+
+	.table-striped>tbody>tr:nth-of-type(odd) {
+		background-color: var(--bg-alt) !important;
+	}
+
+	.table-hover>tbody>tr:hover {
+		background-color: var(--bg-hover) !important;
+	}
+
+	.table>tbody>tr>td.success {
+		background-color: var(--success-bg) !important;
+	}
+
+	.table>tbody>tr>td.danger {
+		background-color: var(--danger-bg) !important;
+	}
+
+	.table>tbody>tr>td.info {
+		background-color: var(--info-bg) !important;
+	}
+
+	.table>tbody>tr>td.warning {
+		background-color: var(--warning-bg) !important;
+	}
+
+	.table-hover>tbody>tr>td.success:hover {
+		background-color: rgba(46, 160, 67, 0.25) !important;
+	}
+
+	.table-hover>tbody>tr>td.danger:hover {
+		background-color: rgba(248, 81, 73, 0.25) !important;
+	}
+
+	.table-hover>tbody>tr>td.info:hover {
+		background-color: rgba(56, 139, 253, 0.25) !important;
+	}
+
+	.table-hover>tbody>tr>td.warning:hover {
+		background-color: rgba(210, 153, 34, 0.25) !important;
+	}
+
+	/* ===== 首页列表视图 ===== */
+	#contests {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+	}
+
+	#contests>thead>tr,
+	#contests>thead>tr>th {
+		background-color: var(--bg-surface) !important;
+		color: var(--text) !important;
+		border-color: var(--border) !important;
+	}
+
+	#contests>tbody>tr {
+		background-color: var(--bg) !important;
+	}
+
+	#contests>tbody>tr:nth-of-type(odd) {
+		background-color: var(--bg-alt) !important;
+	}
+
+	#contests>tbody>tr:hover {
+		background-color: var(--bg-hover) !important;
+	}
+
+	#contests>tbody>tr>td {
+		border-color: var(--border) !important;
+	}
+
+	/* ===== 首页日历视图 ===== */
+	#calendar {
+		color-scheme: dark;
+	}
+
+	/* 列头（星期几）用 surface 色区分；网格/行/单元格背景交给 v7 变量控制 */
+	#calendar [role="columnheader"] {
+		background-color: var(--bg-surface) !important;
+		color: var(--text-muted) !important;
+		border-color: var(--border) !important;
+	}
+
+	/* 今天高亮（clist 自定义类） */
+	#calendar .clist-calendar-today {
+		background-color: rgba(88, 166, 255, 0.12) !important;
+	}
+
+	#calendar .clist-calendar-today [aria-hidden="true"] {
+		color: var(--link) !important;
+		font-weight: 600;
+	}
+
+	/* 日期数字 */
+	#calendar [role="gridcell"] [aria-hidden="true"] {
+		color: var(--text-muted) !important;
+	}
+
+	/* 日历事件：暗色卡片 + 左侧彩色条 */
+	#calendar .clist-calendar-event {
+		background-color: var(--bg-surface) !important;
+		border-left: 3px solid var(--fc-event-color, var(--link)) !important;
+		color: var(--text) !important;
+		box-shadow: none !important;
+	}
+
+	#calendar .clist-calendar-event:hover {
+		background-color: var(--bg-hover) !important;
+	}
+
+	#calendar .clist-calendar-event .clist-calendar-event-time {
+		color: var(--text-muted) !important;
+		background-color: transparent !important;
+	}
+
+	#calendar .clist-calendar-event .clist-calendar-event-title {
+		color: var(--text) !important;
+		background-color: transparent !important;
+	}
+
+	/* 日历事件内部容器透明（修复网站图标 / Activity 栏白色背景） */
+	#calendar .clist-calendar-event>div,
+	#calendar .clist-calendar-event .fc-classic-i9F,
+	#calendar .clist-calendar-event .clist-calendar-actions,
+	#calendar .clist-calendar-event .clist-calendar-actions span,
+	#calendar .clist-calendar-event .clist-calendar-actions img {
+		background-color: transparent !important;
+	}
+
+	/* +N more 按钮 */
+	#calendar [role="button"][aria-haspopup="dialog"],
+	#calendar [role="button"][title^="Show"] {
+		background-color: var(--fc-classic-faint) !important;
+		color: var(--link) !important;
+		border-color: var(--border) !important;
+	}
+
+	#calendar [role="button"][aria-haspopup="dialog"]:hover,
+	#calendar [role="button"][title^="Show"]:hover {
+		background-color: var(--fc-classic-muted) !important;
+		color: var(--link-hover) !important;
+	}
+
+	/* 日历头部标题 */
+	#calendar [role="heading"] {
+		color: var(--text) !important;
+	}
+
+	/* 日历滚动容器 */
+	#calendar [style*="overflow"] {
+		background-color: var(--bg-alt) !important;
+	}
+
+	/* ===== 日历 Popover（“+N more”展开日期详情） =====
+ * 注意：v7 的 popover 渲染在 document.body 下，不在 #calendar 内，
+ * 因此这里用 [role="dialog"][id*="popover"] 定位，不能加 #calendar 前缀。
+ */
+	[role="dialog"][id*="popover"] {
+		background-color: var(--bg-alt) !important;
+		color: var(--text) !important;
+		border: 1px solid var(--border) !important;
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6) !important;
+		color-scheme: dark;
+	}
+
+	/* 把 popover 内部所有 div 背景置透明，避免亮色块 */
+	[role="dialog"][id*="popover"] div {
+		background-color: transparent !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	/* Popover 头部：第 2 个直接子 div 是 header 容器 */
+	[role="dialog"][id*="popover"]>div:nth-child(2) {
+		background-color: var(--bg-surface) !important;
+		color: var(--text) !important;
+		border-bottom: 1px solid var(--border) !important;
+	}
+
+	/* 关闭按钮 */
+	[role="dialog"][id*="popover"] button {
+		background-color: transparent !important;
+		border-color: transparent !important;
+		color: var(--text-muted) !important;
+	}
+
+	[role="dialog"][id*="popover"] button:hover {
+		background-color: var(--bg-hover) !important;
+		color: #fff !important;
+	}
+
+	/* Popover 内事件卡片：暗色卡片 + 左侧彩色条。
+ * 需要覆盖 v7 的 fc-classic-YjJ（background-color: var(--fc-event-color)）。
+ */
+	[role="dialog"][id*="popover"] .clist-calendar-event {
+		background-color: var(--bg-surface) !important;
+		border-left: 3px solid var(--fc-event-color, var(--link)) !important;
+		color: var(--text) !important;
+		box-shadow: none !important;
+	}
+
+	[role="dialog"][id*="popover"] .clist-calendar-event:hover {
+		background-color: var(--bg-hover) !important;
+	}
+
+	[role="dialog"][id*="popover"] .clist-calendar-event * {
+		background-color: transparent !important;
+	}
+
+	[role="dialog"][id*="popover"] .clist-calendar-event .clist-calendar-event-time {
+		color: var(--text-muted) !important;
+	}
+
+	[role="dialog"][id*="popover"] .clist-calendar-event .clist-calendar-event-title {
+		color: var(--text) !important;
+	}
+
+	[role="dialog"][id*="popover"] .clist-calendar-event .fc-classic-i9F {
+		color: var(--text) !important;
+	}
+
+	/* ===== Problems 页面 ===== */
+	#problems table>thead>tr {
+		background-color: var(--bg-surface) !important;
+	}
+
+	#problems table>thead>tr>th {
+		background-color: var(--bg-surface) !important;
+		color: var(--text) !important;
+	}
+
+	#problems table>tbody>tr {
+		background-color: var(--bg) !important;
+	}
+
+	#problems table>tbody>tr:nth-of-type(odd) {
+		background-color: var(--bg-alt) !important;
+	}
+
+	#problems table>tbody>tr:hover {
+		background-color: var(--bg-hover) !important;
+	}
+
+	#problems td.problem-name-column.success,
+	#problems td.problem-result-column.success {
+		background-color: var(--success-bg) !important;
+	}
+
+	#problems td.problem-name-column.danger,
+	#problems td.problem-result-column.danger {
+		background-color: var(--danger-bg) !important;
+	}
+
+	#problems td.problem-name-column.info,
+	#problems td.problem-result-column.info {
+		background-color: var(--info-bg) !important;
+	}
+
+	#problems .problem-result-column.success {
+		color: var(--success) !important;
+	}
+
+	#problems .problem-result-column.danger {
+		color: var(--danger) !important;
+	}
+
+	#problems .problem-result-column.info {
+		color: var(--text-muted) !important;
+	}
+
+	#problems .problem-name-column a {
+		color: var(--link) !important;
+	}
+
+	#problems .problem-name-column a:hover {
+		color: var(--link-hover) !important;
+	}
+
+	#problems .contests,
+	#problems .hidden-contests,
+	#problems .expandable-click,
+	#problems .endless_more {
+		color: var(--link) !important;
+	}
+
+	#problems .contests:hover,
+	#problems .hidden-contests:hover,
+	#problems .expandable-click:hover,
+	#problems .endless_more:hover {
+		color: var(--link-hover) !important;
+	}
+
+	#problems .note-text {
+		color: var(--text-muted) !important;
+	}
+
+	#problems table>tbody>tr.endless_container {
+		background-color: var(--bg) !important;
+	}
+
+	.endless_loading {
+		color: var(--text-muted) !important;
+	}
+
+	.coder-color.coder-gray {
+		color: #9ca3af !important;
+	}
+
+	.coder-color.coder-green {
+		color: var(--success) !important;
+	}
+
+	/* ===== 进度条 ===== */
+	.progress {
+		background-color: var(--bg-surface) !important;
+		box-shadow: none !important;
+	}
+
+	.progress-bar {
+		box-shadow: none !important;
+	}
+
+	.progress-bar-success {
+		background-color: var(--success) !important;
+	}
+
+	.progress-bar-danger {
+		background-color: var(--danger) !important;
+	}
+
+	.progress-bar-info {
+		background-color: var(--info) !important;
+	}
+
+	.progress-bar-warning {
+		background-color: var(--warning) !important;
+	}
+
+	/* ===== Badge 基础 ===== */
+	.badge {
+		background-color: var(--bg-hover) !important;
+		color: var(--text) !important;
+	}
+
+	/* 所有 badge / 标签 hover 统一暗色，避免亮蓝（语义色 badge 在后面单独覆盖） */
+	.badge:hover,
+	.badge:focus,
+	a.badge:hover,
+	a.badge:focus,
+	.toggle.badge:hover,
+	.toggle.badge:focus {
+		background-color: #1f3a5f !important;
+		color: var(--link-hover) !important;
+		text-decoration: none !important;
+	}
+
+	/* 首页列表视图的 “23” 展开 badge 和 toggle badge */
+	#toggle-all,
+	a.toggle.badge,
+	.toggle.badge.progress-bar-info {
+		background-color: var(--bg-hover) !important;
+		color: var(--link) !important;
+		border: 1px solid var(--border) !important;
+	}
+
+	#toggle-all:hover,
+	a.toggle.badge:hover,
+	.toggle.badge.progress-bar-info:hover {
+		background-color: #1f3a5f !important;
+		color: var(--link-hover) !important;
+	}
+
+	/* 可见的标签：暗色底 + 链接蓝文字，与隐藏占位点同色系，不刺眼 */
+	.tag.badge.progress-bar-info {
+		background-color: var(--bg-hover) !important;
+		color: var(--link) !important;
+		border: 1px solid var(--border) !important;
+	}
+
+	.tag.badge.progress-bar-info:hover {
+		background-color: #1f3a5f !important;
+		color: var(--link-hover) !important;
+		text-decoration: none !important;
+	}
+
+	/* 被隐藏的标签：真正不显示 */
+	.tag.badge.progress-bar-info.hidden {
+		display: none !important;
+	}
+
+	/* 标签被隐藏时的占位小圆点：与可见标签同底色，可点击展开 */
+	.hidden-tag.badge.progress-bar-info {
+		display: inline-block !important;
+		min-width: 10px;
+		height: 10px;
+		padding: 0 !important;
+		border-radius: 50% !important;
+		background-color: var(--bg-hover) !important;
+		color: transparent !important;
+		vertical-align: middle;
+		box-sizing: border-box;
+	}
+
+	/* 占位点本身也可能带 hidden 类，此时同样隐藏 */
+	.hidden-tag.badge.progress-bar-info.hidden {
+		display: none !important;
+	}
+
+	/* ===== Badge 语义色：勾叉用背景表示，图标用亮灰（暗色底版） ===== */
+	/* 叉 / 禁用 → 深红背景 */
+	.badge:has(.fa-times),
+	.badge:has(.fa-xmark),
+	.badge:has(.fa-circle-xmark),
+	.badge:has(.fa-ban) {
+		background-color: #3d1517 !important;
+		border: 1px solid rgba(248, 81, 73, 0.45) !important;
+		color: #e6edf3 !important;
+	}
+
+	.badge:has(.fa-times) i,
+	.badge:has(.fa-xmark) i,
+	.badge:has(.fa-circle-xmark) i,
+	.badge:has(.fa-ban) i {
+		color: #e6edf3 !important;
+	}
+
+	/* 勾 → 深绿背景 */
+	.badge:has(.fa-check),
+	.badge:has(.fa-circle-check),
+	.badge:has(.fa-check-circle) {
+		background-color: #12261a !important;
+		border: 1px solid rgba(63, 185, 80, 0.45) !important;
+		color: #e6edf3 !important;
+	}
+
+	.badge:has(.fa-check) i,
+	.badge:has(.fa-circle-check) i,
+	.badge:has(.fa-check-circle) i {
+		color: #e6edf3 !important;
+	}
+
+	/* 问号 → 深黄背景 */
+	.badge:has(.fa-question),
+	.badge:has(.fa-circle-question),
+	.badge:has(.fa-question-circle) {
+		background-color: #2b2110 !important;
+		border: 1px solid rgba(210, 153, 34, 0.45) !important;
+		color: #e6edf3 !important;
+	}
+
+	.badge:has(.fa-question) i,
+	.badge:has(.fa-circle-question) i,
+	.badge:has(.fa-question-circle) i {
+		color: #e6edf3 !important;
+	}
+
+	/* 减号 / 未参与 → 深灰背景 */
+	.badge:has(.fa-minus),
+	.badge:has(.fa-circle-minus) {
+		background-color: #2a2f36 !important;
+		border: 1px solid rgba(139, 148, 158, 0.35) !important;
+		color: #e6edf3 !important;
+	}
+
+	.badge:has(.fa-minus) i,
+	.badge:has(.fa-circle-minus) i {
+		color: #e6edf3 !important;
+	}
+
+	/* hover：只轻微提亮背景，不变成鲜红/鲜绿 */
+	.badge:has(.fa-times):hover,
+	.badge:has(.fa-xmark):hover,
+	.badge:has(.fa-circle-xmark):hover,
+	.badge:has(.fa-ban):hover {
+		background-color: #4a1a1c !important;
+		border-color: rgba(248, 81, 73, 0.7) !important;
+		color: #fff !important;
+	}
+
+	.badge:has(.fa-check):hover,
+	.badge:has(.fa-circle-check):hover,
+	.badge:has(.fa-check-circle):hover {
+		background-color: #17321f !important;
+		border-color: rgba(63, 185, 80, 0.7) !important;
+		color: #fff !important;
+	}
+
+	.badge:has(.fa-question):hover,
+	.badge:has(.fa-circle-question):hover,
+	.badge:has(.fa-question-circle):hover {
+		background-color: #372a15 !important;
+		border-color: rgba(210, 153, 34, 0.7) !important;
+		color: #fff !important;
+	}
+
+	.badge:has(.fa-minus):hover,
+	.badge:has(.fa-circle-minus):hover {
+		background-color: #343a42 !important;
+		border-color: rgba(139, 148, 158, 0.6) !important;
+		color: #fff !important;
+	}
+
+	/* ===== Activity Meter ===== */
+	.activity-meter {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.activity-meter-track {
+		background-color: var(--bg-hover) !important;
+		border-radius: 3px;
+		overflow: hidden;
+	}
+
+	.activity-meter-fill {
+		background-color: var(--link) !important;
+		border-radius: 3px;
+	}
+
+	/* ===== 表单控件 ===== */
+	.form-control {
+		background-color: var(--bg) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.form-control:focus {
+		border-color: var(--link) !important;
+		box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.25) !important;
+	}
+
+	.form-control::placeholder {
+		color: var(--text-muted) !important;
+	}
+
+	.input-group-addon {
+		background-color: var(--bg-surface) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.btn-default {
+		background-color: var(--bg-surface) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.btn-default:hover,
+	.btn-default:focus,
+	.btn-default:active,
+	.btn-default.active {
+		background-color: var(--bg-hover) !important;
+		border-color: var(--border) !important;
+		color: #fff !important;
+	}
+
+	.btn-primary {
+		background-color: #1f6feb !important;
+		border-color: #1f6feb !important;
+		color: #fff !important;
+	}
+
+	.btn-primary:hover,
+	.btn-primary:focus {
+		background-color: #388bfd !important;
+		border-color: #388bfd !important;
+	}
+
+	/* ===== Select2 ===== */
+	.select2-container--bootstrap .select2-selection {
+		background-color: var(--bg) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.select2-container--bootstrap .select2-selection--single .select2-selection__rendered {
+		color: var(--text) !important;
+	}
+
+	.select2-container--bootstrap .select2-selection--multiple .select2-selection__choice {
+		background-color: var(--bg-hover) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.select2-container--bootstrap .select2-selection--multiple .select2-selection__choice:hover {
+		background-color: #1f3a5f !important;
+		color: var(--link-hover) !important;
+	}
+
+	.select2-container--bootstrap .select2-selection--multiple .select2-selection__choice__remove {
+		color: var(--text-muted) !important;
+	}
+
+	.select2-container--bootstrap .select2-selection--multiple .select2-selection__choice__remove:hover {
+		color: var(--danger) !important;
+	}
+
+	.select2-container--bootstrap .select2-selection--single .select2-selection__arrow b {
+		border-color: var(--text-muted) transparent transparent transparent !important;
+	}
+
+	.select2-container--disabled .select2-selection {
+		background-color: var(--bg-surface) !important;
+		color: var(--text-muted) !important;
+	}
+
+	.select2-dropdown {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+	}
+
+	.select2-results__option {
+		color: var(--text) !important;
+	}
+
+	.select2-results__option--highlighted,
+	.select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+		background-color: #1f6feb !important;
+		color: #fff !important;
+	}
+
+	.select2-container--bootstrap .select2-results__option[aria-selected=true] {
+		background-color: var(--bg-hover) !important;
+		color: var(--text) !important;
+	}
+
+	.select2-search__field {
+		background-color: var(--bg) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.select2-search__field::placeholder {
+		color: var(--text-muted) !important;
+	}
+
+	.select2-selection__clear {
+		color: var(--text-muted) !important;
+	}
+
+	.select2-selection__clear:hover {
+		color: var(--danger) !important;
+	}
+
+	/* ===== 滑块 ===== */
+	.ui-slider {
+		background-color: var(--bg-surface) !important;
+		border-color: var(--border) !important;
+	}
+
+	.ui-slider-range {
+		background-color: #1f6feb !important;
+	}
+
+	.ui-slider-handle,
+	.ui-state-default {
+		background-color: var(--bg-hover) !important;
+		border-color: var(--link) !important;
+		color: var(--text) !important;
+	}
+
+	.ui-state-default:hover,
+	.ui-state-hover {
+		background-color: var(--bg-surface) !important;
+		border-color: var(--link-hover) !important;
+	}
+
+	/* ===== Toggle 开关 ===== */
+	.toggle.btn {
+		border-color: var(--border) !important;
+	}
+
+	.toggle-group .btn-default {
+		background-color: var(--bg-surface) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.toggle-group .btn-default.active,
+	.toggle-group .btn-default:hover {
+		background-color: var(--bg-hover) !important;
+		color: #fff !important;
+	}
+
+	.toggle-handle {
+		background-color: var(--bg-hover) !important;
+		border-color: var(--border) !important;
+	}
+
+	/* ===== Tooltip ===== */
+	.tooltip-inner {
+		background-color: #1c2128 !important;
+		color: var(--text) !important;
+		border: 1px solid var(--border) !important;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+	}
+
+	.tooltip.top .tooltip-arrow {
+		border-top-color: #1c2128 !important;
+	}
+
+	.tooltip.bottom .tooltip-arrow {
+		border-bottom-color: #1c2128 !important;
+	}
+
+	.tooltip.left .tooltip-arrow {
+		border-left-color: #1c2128 !important;
+	}
+
+	.tooltip.right .tooltip-arrow {
+		border-right-color: #1c2128 !important;
+	}
+
+	/* ===== 页脚 ===== */
+	#footer .navbar-default {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+	}
+
+	#footer .navbar-nav>li>a {
+		color: var(--text-muted) !important;
+	}
+
+	#footer .navbar-nav>li>a:hover {
+		color: var(--link) !important;
+	}
+
+	/* ===== Donate / list-group ===== */
+	.list-group {
+		background-color: transparent !important;
+	}
+
+	.list-group-item {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+		color: var(--text) !important;
+	}
+
+	.list-group-item:hover,
+	.list-group-item:focus {
+		background-color: var(--bg-hover) !important;
+		border-color: var(--border) !important;
+		color: #fff !important;
+	}
+
+	.list-group-item.active,
+	.list-group-item.active:hover,
+	.list-group-item.active:focus {
+		background-color: #1f6feb !important;
+		border-color: #1f6feb !important;
+		color: #fff !important;
+	}
+
+	/* 图标本身保持透明底，避免 service-icon-btn 的亮色按钮底 */
+	.list-group-item .service-icon-btn {
+		background-color: transparent !important;
+		border-color: transparent !important;
+	}
+
+	/* ===== 其他 ===== */
+	.rating-clips svg {
+		color: var(--text-muted);
+	}
+
+	/* 内联白色背景兜底（某些动态插入元素） */
+	[style*="background-color: rgb(255, 255, 255)"],
+	[style*="background-color: #fff"],
+	[style*="background-color: white"],
+	[style*="background: white"] {
+		background-color: var(--bg-alt) !important;
+	}
+
+	/* ===== Standings 页面 ===== */
+	#standings_list {
+		background-color: var(--bg-alt) !important;
+		border-color: var(--border) !important;
+	}
+
+	#standings_list .floatThead-container {
+		background-color: var(--bg-surface) !important;
+	}
+
+	#standings_list table>thead>tr,
+	#standings_list .floatThead-table>thead>tr {
+		background-color: var(--bg-surface) !important;
+	}
+
+	#standings_list table>thead>tr>th,
+	#standings_list .floatThead-table>thead>tr>th {
+		background-color: var(--bg-surface) !important;
+		color: var(--text) !important;
+		border-color: var(--border) !important;
+	}
+
+	#standings_list table>tbody>tr {
+		background-color: var(--bg) !important;
+	}
+
+	#standings_list table>tbody>tr:nth-of-type(odd) {
+		background-color: var(--bg-alt) !important;
+	}
+
+	#standings_list table>tbody>tr.contest:hover,
+	#standings_list table>tbody>tr.sticky-hovered:hover {
+		background-color: var(--bg-hover) !important;
+	}
+
+	#standings_list table>tbody>tr>td {
+		border-color: var(--border) !important;
+	}
+
+	#standings_list .n_statistics,
+	#standings_list .n_problems,
+	#standings_list .rank,
+	#standings_list .date {
+		color: var(--text-muted) !important;
+	}
+
+	#standings_list .text-success,
+	#standings_list a.text-success {
+		color: var(--success) !important;
+	}
+
+	#standings_list .text-success:hover {
+		color: #56d364 !important;
+	}
+
+	#standings_list .text-danger,
+	#standings_list a.text-danger {
+		color: var(--danger) !important;
+	}
+
+	#standings_list .text-danger:hover {
+		color: #ff7b72 !important;
+	}
+
+	#standings_list .text-info,
+	#standings_list a.text-info {
+		color: var(--info) !important;
+	}
+
+	#standings_list .text-info:hover {
+		color: var(--link-hover) !important;
+	}
+
+	#standings_list .text-warning {
+		color: var(--warning) !important;
+	}
+
+	#standings_list .rating-change {
+		font-weight: 600;
+	}
+
+	#standings_list .rating-change-down {
+		color: var(--danger) !important;
+	}
+
+	#standings_list .rating-change-up {
+		color: var(--success) !important;
+	}
+
+	#standings_list .toggled {
+		color: var(--link) !important;
+		cursor: pointer;
+	}
+
+	#standings_list .toggled:hover {
+		color: var(--link-hover) !important;
+	}
+
+	#standings_list .badge.progress-bar-info.toggled {
+		background-color: var(--bg-hover) !important;
+		color: var(--link) !important;
+		border: 1px solid var(--border) !important;
+	}
+
+	#standings_list .fa-eye-slash {
+		color: var(--text-muted) !important;
+	}
+
+	#standings_list .expandable-text {
+		color: var(--text) !important;
+	}
+
+	#standings_list .expandable-click {
+		color: var(--link) !important;
+		cursor: pointer;
+	}
+
+	#standings_list .expandable-click:hover {
+		color: var(--link-hover) !important;
+	}
+
+	#standings_list .endless_container {
+		background-color: var(--bg) !important;
+	}
+
+	#standings_list .endless_more {
+		color: var(--link) !important;
+	}
+
+	#standings_list .endless_more:hover {
+		color: var(--link-hover) !important;
+	}
+
+	#standings_list .endless_loading {
+		color: var(--text-muted) !important;
+	}
+
+	#standings_list table>tbody>tr>td[colspan="100%"] {
+		background-color: var(--bg) !important;
+	}
+
+	/* ===== Standings 状态行背景适配 ===== */
+	#standings_list table>tbody>tr.success {
+		background-color: var(--success-bg) !important;
+	}
+
+	#standings_list table>tbody>tr.danger {
+		background-color: var(--danger-bg) !important;
+	}
+
+	#standings_list table>tbody>tr.info {
+		background-color: var(--info-bg) !important;
+	}
+
+	#standings_list table>tbody>tr.warning {
+		background-color: var(--warning-bg) !important;
+	}
+
+	/* 避免原站给 td 设置的亮色背景盖住行背景 */
+	#standings_list table>tbody>tr.success>td,
+	#standings_list table>tbody>tr.danger>td,
+	#standings_list table>tbody>tr.info>td,
+	#standings_list table>tbody>tr.warning>td {
+		background-color: transparent !important;
+	}
+
+	/* 状态行 hover 时使用加深的状态色，而不是统一灰 */
+	#standings_list table>tbody>tr.success:hover,
+	#standings_list table>tbody>tr.success.sticky-hovered:hover {
+		background-color: rgba(46, 160, 67, 0.25) !important;
+	}
+
+	#standings_list table>tbody>tr.danger:hover,
+	#standings_list table>tbody>tr.danger.sticky-hovered:hover {
+		background-color: rgba(248, 81, 73, 0.25) !important;
+	}
+
+	#standings_list table>tbody>tr.info:hover,
+	#standings_list table>tbody>tr.info.sticky-hovered:hover {
+		background-color: rgba(56, 139, 253, 0.25) !important;
+	}
+
+	#standings_list table>tbody>tr.warning:hover,
+	#standings_list table>tbody>tr.warning.sticky-hovered:hover {
+		background-color: rgba(210, 153, 34, 0.25) !important;
+	}
+
+}
